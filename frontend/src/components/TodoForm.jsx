@@ -1,14 +1,14 @@
 import { useState } from "react";
 
-export default function TodoForm({ todos, setTodos }) {
-    const [todo, setTodo] = useState('');
-    const handleTodoChange = (event) => {
-        setTodo(event.target.value);
+export default function TodoForm({ handleAddTodo }) {
+    const [text, setText] = useState('');
+    const handleTextChange = (event) => {
+        setText(event.target.value);
     };
     const handleSubmit = (event) => {
         event.preventDefault();
-        setTodos([...todos, todo]);
-        setTodo('');
+        handleAddTodo(text);
+        setText('');
     };
     return (
         <div className="w-full max-w-md">
@@ -16,8 +16,8 @@ export default function TodoForm({ todos, setTodos }) {
                 <input 
                     type="text" 
                     placeholder="Ajouter une tâche..." 
-                    value={todo} 
-                    onChange={handleTodoChange}
+                    value={text} 
+                    onChange={handleTextChange}
                     className="flex-1 px-4 py-2 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                 />
                 <button 

@@ -1,15 +1,6 @@
 import TodoItem from "./TodoItem";
 
-export default function TodoList({ todos, setTodos }) {
-    const handleDelete = (index) => {
-        const newTodos = todos.filter((_, i) => i !== index);
-        setTodos(newTodos);
-    };
-
-    const handleToggle = (index) => {
-        // Toggle functionality can be implemented later
-    };
-
+export default function TodoList({ todos, handleDeleteTodo, handleToggleTodo }) {
     if (todos.length === 0) {
         return (
             <div className="w-full max-w-md text-center py-8">
@@ -20,13 +11,13 @@ export default function TodoList({ todos, setTodos }) {
 
     return (
         <div className="w-full max-w-md space-y-2">
-            {todos.map((todo, index) => (
+            {todos.map((todo) => (
                 <TodoItem 
-                    key={index} 
-                    todo={todo} 
-                    index={index}
-                    onDelete={handleDelete}
-                    onToggle={handleToggle}
+                    key={todo.id} 
+                    todo={todo.text} 
+                    id={todo.id}
+                    onDelete={handleDeleteTodo}
+                    onToggle={handleToggleTodo}
                 />
             ))}
         </div>
