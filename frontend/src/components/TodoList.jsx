@@ -14,7 +14,8 @@ export default function TodoList({ todos, handleDeleteTodo, handleToggleTodo }) 
             {todos.map((todo) => (
                 <TodoItem 
                     key={todo.id} 
-                    todo={todo.text} 
+                    todo={todo.text}
+                    isDone={todo.isDone}
                     id={todo.id}
                     onDelete={handleDeleteTodo}
                     onToggle={handleToggleTodo}

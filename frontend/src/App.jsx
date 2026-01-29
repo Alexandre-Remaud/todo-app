@@ -6,6 +6,8 @@ let nextId = 0;
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const completedTodos = todos.filter(todo => todo.isDone);
+  const remainingTodos = todos.filter(todo => !todo.isDone);
 
   function handleAddTodo(text) {
     setTodos([
@@ -25,7 +27,7 @@ function App() {
   function handleToggleTodo(id) {
     setTodos(todos.map(todo => todo.id === id ? {...todo, isDone: !todo.isDone} : todo));
   }
-  
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4">
       <div className="max-w-2xl mx-auto">
@@ -53,7 +55,10 @@ function App() {
         {todos.length > 0 && (
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-500">
-              {todos.length} {todos.length === 1 ? 'tâche' : 'tâches'} en cours
+              {remainingTodos.length} {remainingTodos.length === 1 ? 'tâche' : 'tâches'} en cours
+            </p>
+            <p className="text-sm text-gray-500">
+              {completedTodos.length} {completedTodos.length === 1 ? 'tâche' : 'tâches'} terminées
             </p>
           </div>
         )}
