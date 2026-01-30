@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem";
 
-export default function TodoList({ todos, handleDeleteTodo, handleToggleTodo }) {
+export default function TodoList({ todos, handleDeleteTodo, handleToggleTodo, handleUpdateTodo }) {
     if (todos.length === 0) {
         return (
             <div className="w-full max-w-md text-center py-8">
@@ -12,13 +12,14 @@ export default function TodoList({ todos, handleDeleteTodo, handleToggleTodo }) 
     return (
         <div className="w-full max-w-md space-y-2">
             {todos.map((todo) => (
-                <TodoItem 
-                    key={todo.id} 
+                <TodoItem
+                    key={todo.id}
                     todo={todo.text}
-                    isDone={todo.isDone}
                     id={todo.id}
                     onDelete={handleDeleteTodo}
                     onToggle={handleToggleTodo}
+                    isDone={todo.isDone}
+                    onUpdateTodo={handleUpdateTodo}
                 />
             ))}
         </div>
