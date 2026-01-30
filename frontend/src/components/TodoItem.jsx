@@ -31,7 +31,7 @@ export default function TodoItem({
       />
       {isEditing ? (
         <input
-          className="flex-1 text-gray-800 select-none"
+          className="flex-1 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
           type="text"
           value={editValue}
           onChange={(e) => setEditValue(e.target.value)}
