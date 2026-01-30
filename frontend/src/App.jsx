@@ -15,8 +15,8 @@ function App() {
       {
         id: nextId++,
         text: text,
-        isDone: false,
-      },
+        isDone: false
+      }
     ])
   }
 

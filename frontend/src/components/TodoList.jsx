@@ -4,7 +4,7 @@ export default function TodoList({
   todos,
   handleDeleteTodo,
   handleToggleTodo,
-  handleUpdateTodo,
+  handleUpdateTodo
 }) {
   if (todos.length === 0) {
     return (
