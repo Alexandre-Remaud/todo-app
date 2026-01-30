@@ -1,13 +1,20 @@
 import TodoList from "./components/TodoList"
 import TodoForm from "./components/TodoForm"
-import { useState } from "react"
-
-let nextId = 0
+import { useState, useEffect } from "react"
+import { fetchTodos, saveTodos } from "./services/todoApi"
 
 function App() {
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState(() => {
+    const saved = fetchTodos()
+    return saved ? JSON.parse(saved) : []
+  })
   const completedTodos = todos.filter((todo) => todo.isDone)
   const remainingTodos = todos.filter((todo) => !todo.isDone)
+  let nextId = todos.length > 0 ? todos.length : 0
+
+  useEffect(() => {
+    saveTodos(todos)
+  }, [todos])
 
   function handleAddTodo(text) {
     setTodos([
